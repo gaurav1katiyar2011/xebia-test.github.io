@@ -11,6 +11,11 @@ export function search(state = {}, action) {
         isSearch: true,
         searchRes: action.searchRes
       };
+    case userConstants.FILTER_SUCCESS:
+      return {
+        isSearch: true,
+        filterData: action.data
+      };    
     case userConstants.SEARCH_FAILURE:
       return {};
     default:

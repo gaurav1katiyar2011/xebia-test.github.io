@@ -11,16 +11,15 @@ export const SearchComponent = (props)=>{
         return (
             <div style={{"marginTop": "12px"}}>
                 { data.map(function (planet) {
+                        let height=planet.population;
+                        let width = planet.population; 
                     return (
-                        <div key={planet.name} className="panel panel-default">
-                            <div className="panel-heading">{planet.name}</div>
-                            <div className="panel-body">
-                                <p>
-                                    Population:
-                                    <label>   {planet.population} </label>
-                                </p>
-                            </div>
+
+                        <div style="text-align:center">
+                            <span class="dot" style="height: 100px;width: 100px;"></span>
                         </div>
+
+
                     )
                 })}
             </div>

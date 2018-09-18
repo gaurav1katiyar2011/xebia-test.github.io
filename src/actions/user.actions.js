@@ -2,13 +2,11 @@ import { userConstants } from '../constants';
 import { userService } from '../services';
 import { alertActions } from './';
 import { history } from '../store';
-
 export const userActions = {
     login,
     logout,
-    search
+    fetchAllPlanet
 };
-
 function login(username, password) {
     return dispatch => {
         dispatch(request({ username }));
@@ -28,14 +26,13 @@ function login(username, password) {
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
-function search(searchData) {
+function fetchAllPlanet() {
     return dispatch => {
-        dispatch(request({ searchData }));
-        userService.search(searchData)
+        dispatch(request("allData"));
+        userService.search()
             .then( searchRes => { 
                         dispatch(success(searchRes));
-                    //    history.push('/');    
-                    
+                    //    history.push('/');       
                 },
                 error => {
                     console.log("users error"+error);
@@ -48,8 +45,6 @@ function search(searchData) {
     function success(searchRes) { return { type: userConstants.SEARCH_SUCCESS, searchRes } }
     function failure(error) { return { type: userConstants.SEARCH_FAILURE, error } }
 }
-
-
 function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };

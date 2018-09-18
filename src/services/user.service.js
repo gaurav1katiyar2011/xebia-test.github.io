@@ -28,7 +28,26 @@ function login(username, password) {
             return username;
         });
 }
-function search(searchData) {
+// function search(searchData) {
+//     return fetch('https://swapi.co/api/planets/')
+//         .then(response => {
+//             if (!response.ok) { 
+//                 return Promise.reject(response.statusText);
+//             }
+//             return response.json();
+//         })
+//         .then(searchRes => {
+
+//             let apiSearchPlanetDetails= searchRes.results;
+//             let filteredSearchDetail = apiSearchPlanetDetails.filter(function(planet) {
+//                 return filterData(planet,searchData)
+//             });
+//             //console.log("search planent="+JSON.stringify(filteredSearchDetail));
+//             return filteredSearchDetail;
+//         });
+// }
+
+function search() {
     return fetch('https://swapi.co/api/planets/')
         .then(response => {
             if (!response.ok) { 
@@ -37,25 +56,15 @@ function search(searchData) {
             return response.json();
         })
         .then(searchRes => {
-
             let apiSearchPlanetDetails= searchRes.results;
-            let filteredSearchDetail = apiSearchPlanetDetails.filter(function(planet) {
-                return filterData(planet,searchData)
-            });
-            //console.log("search planent="+JSON.stringify(filteredSearchDetail));
-            return filteredSearchDetail;
+            // let filteredSearchDetail = apiSearchPlanetDetails.filter(function(planet) {
+            //     return filterData(planet,searchData)
+            // });
+            // //console.log("search planent="+JSON.stringify(filteredSearchDetail));
+            return apiSearchPlanetDetails;
         });
 }
 
-function filterData(data,criteria){
-    let name= data.name.toString();
-    //return true;
-    return name.toLowerCase().includes(criteria.toLowerCase());
-    // if (data.name===criteria){
-    //     return true;
-    // }
-    // return false
-}
 
 function logout() {
     // remove user from local storage to log user out

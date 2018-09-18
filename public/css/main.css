@@ -1,3 +1,4 @@
+
 .list-items{
     margin: 0px;
     padding: 0px;
@@ -6,3 +7,10 @@
     float: left;
 }
 
+body {
+    background-color: #363640;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+  }
